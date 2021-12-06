@@ -5,6 +5,8 @@ import sys
 from decimal import Decimal
 from datetime import datetime
 
+VERSION = "0.0.1"
+
 BLOCKPIT_FIELD_NAMES =  [   'id', \
                             'exchange_name', \
                             'depot_name', \
@@ -33,7 +35,7 @@ def init_argparse() -> argparse.ArgumentParser:
         help='Blockpit.io depot name', default='Validator')
     parser.add_argument(
         "-v", "--version", action="version",
-        version = f"{parser.prog} version 0.0.1"
+        version = f"{parser.prog} version {VERSION}"
     )
     return parser
 
