@@ -1,5 +1,6 @@
 # custom ignores
-*.csv
+/*.xslx
+/*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
