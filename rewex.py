@@ -6,8 +6,11 @@ import sys
 from decimal import Decimal
 import pylightxl as xl
 import shutil
+import datetime
 
 from pylightxl.pylightxl import Database
+
+XLSX_TABLE_NAME = "Tabelle1"
 
 def init_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -67,8 +70,16 @@ def CSV2XLSX(input_file: str,output_file: str, depot_name: str) -> None:
             average_ETH_price = average_ETH_price + Decimal("".join(d for d in row[3] if d.isdigit() or d == '.'))
             total_ETH_rewards = total_ETH_rewards + current_ETH_reward
             total_EUR_rewards = total_EUR_rewards + current_EUR_reward
-            db.ws(ws='Tabelle1').update_index(row=xlsx_transaction_id+1, col=1, val=xlsx_transaction_id)
-            db.ws(ws='Tabelle1').update_index(row=xlsx_transaction_id+1, col=3, val=depot_name)
+            date_CSV = datetime.datetime.strptime(row[0], '%Y-%m-%d')
+            date_CSV = date_CSV.replace(hour=23,minute=59,second=59)
+            date_XLSX = date_CSV.strftime("%d/%m/%Y %H:%M:%S")
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=1, val=xlsx_transaction_id)
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=3, val=depot_name)
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=4, val=date_XLSX)
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=5, val="ETH")
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=6, val=current_ETH_reward)
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=9, val="ETH")
+            db.ws(ws=XLSX_TABLE_NAME).update_index(row=xlsx_transaction_id+1, col=11, val="masternode")
             xlsx_transaction_id = xlsx_transaction_id + 1
         xl.writexl(db=db, fn=output_file)
         average_ETH_price =  average_ETH_price/(xlsx_transaction_id-1)
