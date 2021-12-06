@@ -5,7 +5,7 @@ import sys
 from decimal import Decimal
 from datetime import datetime
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 BLOCKPIT_FIELD_NAMES =  [   'id', \
                             'exchange_name', \
