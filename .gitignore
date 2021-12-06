@@ -1,5 +1,5 @@
 # custom ignores
-/*.xslx
+/*.xlsx
 /*.csv
 
 # Byte-compiled / optimized / DLL files
