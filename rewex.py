@@ -32,7 +32,7 @@ def init_argparse() -> argparse.ArgumentParser:
     parser.add_argument("-o", "--output-file",type=str, nargs=1,
         help='Output file name (CSV) for Blockpit.io')
     parser.add_argument("-d", "--depot-name", type=str, nargs=1,
-        help='Blockpit.io depot name', default='Validator')
+        help='Blockpit.io depot name')
     parser.add_argument(
         "-v", "--version", action="version",
         version = f"{parser.prog} version {VERSION}"
@@ -89,7 +89,7 @@ def CSV2Blockpit(input_file: str,output_file: str, depot_name: str) -> None:
             print(f"\tNumber of entries: {blockpit_transaction_id-1}")          
             print(f"\tTotal ETH rewards: {total_ETH_rewards}")
             print(f"\tTotal rewards in EUR: {total_EUR_rewards}")
-            print(f"\tAverage ETH price: {average_ETH_price}")
+            print(f"\tAverage ETH price in EUR: {round(average_ETH_price, 2)}")
             print(f"\tDepot-name: {depot_name}")
             print("--- END CSV information ---")
             print("")
@@ -106,6 +106,11 @@ def main() -> None:
         output_file_name = parse_output_file_name(args.output_file[0])
     print(f"Input file: {input_file_name}")
     print(f"Output file: {output_file_name}")
-    CSV2Blockpit(input_file_name,output_file_name,depot_name=args.depot_name[0])
+    if args.depot_name is None:
+        depot_name = 'Validator'
+    else:
+        depot_name = args.depot_name[0]
+    print(depot_name)
+    CSV2Blockpit(input_file_name,output_file_name,depot_name)
 
 main()
