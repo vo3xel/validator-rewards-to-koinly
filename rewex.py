@@ -24,12 +24,12 @@ BLOCKPIT_FIELD_NAMES =  [   'id', \
 
 def init_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        usage="%(prog)s INPUT-FILE [OUTPUT-FILE]",
+        usage="%(prog)s INPUT_FILE [OUTPUT-FILE]",
         description="Converts Beaconchain validator CSV rewards exports to Blockpit.io CSV file."
     )
-    parser.add_argument('input_file', type=str, nargs=1,
+    parser.add_argument('INPUT_FILE', type=str, nargs=1,
                     help='CSV export file name from beaconcha.in')
-    parser.add_argument("-o", "--output-file", type=str, nargs=1,
+    parser.add_argument("-o", "--output-file",type=str, nargs=1,
         help='Output file name (CSV) for Blockpit.io')
     parser.add_argument("-d", "--depot-name", type=str, nargs=1,
         help='Blockpit.io depot name', default='Validator')
@@ -42,15 +42,15 @@ def init_argparse() -> argparse.ArgumentParser:
 def parse_input_file_name(filename: str) -> str:
     if os.path.isfile(filename):
             if len(str(filename).rsplit('.', 1)) != 2 or filename.rsplit('.', 1)[1] != 'csv':
-                sys.exit("INPUT-FILE exists but file name is invalid. File name must end with \".csv\"")
+                sys.exit("INPUT_FILE exists but file name is invalid. File name must end with \".csv\"")
             else:
                 return filename
     else:
-        sys.exit("Error: INPUT-FILE is not a valid file.")
+        sys.exit("Error: INPUT_FILE is not a valid file.")
 
 def parse_output_file_name(filename: str) -> str:
     if len(str(filename).rsplit('.', 1)) != 2 or filename.rsplit('.', 1)[1] != 'csv':
-        sys.exit("OUTPUT-FILE name is invalid. File name must end with \".csv\"")
+        sys.exit("OUTPUT_FILE name is invalid. File name must end with \".csv\"")
     else:
         return filename
 
@@ -69,8 +69,8 @@ def CSV2Blockpit(input_file: str,output_file: str, depot_name: str) -> None:
             average_ETH_price = 0
             for row in csvreader:
                 if blockpit_transaction_id == 1:
-                    start_date = row[0]
-                end_date = row[0]
+                    end_date = row[0]
+                start_date = row[0]
                 current_ETH_reward = Decimal("".join(d for d in row[2] if d.isdigit() or d == '.'))
                 current_EUR_reward = Decimal("".join(d for d in row[4] if d.isdigit() or d == '.'))
                 average_ETH_price = average_ETH_price + Decimal("".join(d for d in row[3] if d.isdigit() or d == '.'))
@@ -85,7 +85,7 @@ def CSV2Blockpit(input_file: str,output_file: str, depot_name: str) -> None:
             average_ETH_price =  average_ETH_price/(blockpit_transaction_id-1)
             print("---   CSV information   ---")
             print(f"\tHeader: {', '.join(headers)}")
-            print(f"\tTime range: from {start_date[-1]} to {end_date}")
+            print(f"\tTime range: from {start_date} to {end_date}")
             print(f"\tNumber of entries: {blockpit_transaction_id-1}")          
             print(f"\tTotal ETH rewards: {total_ETH_rewards}")
             print(f"\tTotal rewards in EUR: {total_EUR_rewards}")
@@ -93,19 +93,19 @@ def CSV2Blockpit(input_file: str,output_file: str, depot_name: str) -> None:
             print(f"\tDepot-name: {depot_name}")
             print("--- END CSV information ---")
             print("")
-            print(f"Blockpit CSV written {output_file}")
+            print(f"Blockpit CSV written: {output_file}")
     return
 
 def main() -> None:
     parser = init_argparse()
     args = parser.parse_args()
-    input_file_name = parse_input_file_name(args.input_file[0])
-    if args.output_file is None or args.input_file[0] == args.output_file[0]:
+    input_file_name = parse_input_file_name(args.INPUT_FILE[0])
+    if args.output_file is None or args.INPUT_FILE[0] == args.output_file[0]:
         output_file_name = input_file_name.rsplit('.',1)[0] + "_blockpit.csv"
     else:
         output_file_name = parse_output_file_name(args.output_file[0])
     print(f"Input file: {input_file_name}")
     print(f"Output file: {output_file_name}")
-    CSV2Blockpit(input_file_name,output_file_name,depot_name=args.depot_name)
+    CSV2Blockpit(input_file_name,output_file_name,depot_name=args.depot_name[0])
 
 main()
