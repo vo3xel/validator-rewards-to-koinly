@@ -5,7 +5,7 @@ This python script converts ETH validator rewards exported from beachoncha.in to
 
 ## Export validator rewards from Beaconcha.in
 Go to https://beaconcha.in/rewards. Select Validator and export CSV.
-
+/assets/videos/beacon_chain_csv.mp4
 
 ## Convert CSV files
 Use the python script to convert the Beaconcha.in CSV to a Blockpit CSV.
