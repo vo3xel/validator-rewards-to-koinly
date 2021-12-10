@@ -79,7 +79,7 @@ def CSV2Blockpit(input_file: str,output_file: str, depot_name: str) -> None:
                 date_CSV = datetime.strptime(row[0], '%Y-%m-%d')
                 date_CSV = date_CSV.replace(hour=22,minute=59,second=59)
                 date_Blockpit_CSV = date_CSV.strftime("%d.%m.%Y %H:%M:%S")
-                writerow = [blockpit_transaction_id,"exchange",depot_name,date_Blockpit_CSV,"ETH",current_ETH_reward,"","","ETH",0.0,"masternode"]
+                writerow = [blockpit_transaction_id,"exchange",depot_name,date_Blockpit_CSV,"ETH",current_ETH_reward,"","","ETH",0.0,"staking"]
                 csvwriter.writerow(writerow)
                 blockpit_transaction_id = blockpit_transaction_id + 1
             average_ETH_price =  average_ETH_price/(blockpit_transaction_id-1)
