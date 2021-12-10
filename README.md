@@ -1,5 +1,5 @@
 # rewex.py
-This python script converts ETH validator rewards exported from beachoncha.in to a CSV file which can then be imported to blockpit.io
+This python script converts ETH validator rewards exported from beaconcha.in to a CSV file which can then be imported to blockpit.io
 
 # Usage
 
