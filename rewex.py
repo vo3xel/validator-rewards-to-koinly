@@ -110,7 +110,6 @@ def main() -> None:
         depot_name = 'Validator'
     else:
         depot_name = args.depot_name[0]
-    print(depot_name)
     CSV2Blockpit(input_file_name,output_file_name,depot_name)
 
 main()
