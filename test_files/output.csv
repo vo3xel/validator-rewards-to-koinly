@@ -1,6 +1,6 @@
 id,exchange_name,depot_name,transaction_date,buy_asset,buy_amount,sell_asset,sell_amount,fee_asset,fee_amount,transaction_type,note,linked_transaction
-1,exchange,Validator,05.12.2021 22:59:59,ETH,0.00404,,,ETH,0.0,masternode
-2,exchange,Validator,04.12.2021 22:59:59,ETH,0.00407,,,ETH,0.0,masternode
-3,exchange,Validator,03.12.2021 22:59:59,ETH,0.00402,,,ETH,0.0,masternode
-4,exchange,Validator,02.12.2021 22:59:59,ETH,0.00406,,,ETH,0.0,masternode
-5,exchange,Validator,01.12.2021 22:59:59,ETH,0.00405,,,ETH,0.0,masternode
+1,exchange,Validator,05.12.2021 22:59:59,ETH,0.00404,,,ETH,0.0,staking
+2,exchange,Validator,04.12.2021 22:59:59,ETH,0.00407,,,ETH,0.0,staking
+3,exchange,Validator,03.12.2021 22:59:59,ETH,0.00402,,,ETH,0.0,staking
+4,exchange,Validator,02.12.2021 22:59:59,ETH,0.00406,,,ETH,0.0,staking
+5,exchange,Validator,01.12.2021 22:59:59,ETH,0.00405,,,ETH,0.0,staking
