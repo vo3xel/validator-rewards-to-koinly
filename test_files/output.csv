@@ -1,6 +1,6 @@
-id,exchange_name,depot_name,transaction_date,buy_asset,buy_amount,sell_asset,sell_amount,fee_asset,fee_amount,transaction_type,note,linked_transaction
-1,exchange,Validator,05.12.2021 22:59:59,ETH,0.00404,,,ETH,0.0,staking
-2,exchange,Validator,04.12.2021 22:59:59,ETH,0.00407,,,ETH,0.0,staking
-3,exchange,Validator,03.12.2021 22:59:59,ETH,0.00402,,,ETH,0.0,staking
-4,exchange,Validator,02.12.2021 22:59:59,ETH,0.00406,,,ETH,0.0,staking
-5,exchange,Validator,01.12.2021 22:59:59,ETH,0.00405,,,ETH,0.0,staking
+Koinly Date,Amount,Currency,Label,TxHash
+2021-12-05 22:59 UTC,0.00404,ETH,staking,
+2021-12-04 22:59 UTC,0.00407,ETH,staking,
+2021-12-03 22:59 UTC,0.00402,ETH,staking,
+2021-12-02 22:59 UTC,0.00406,ETH,staking,
+2021-12-01 22:59 UTC,0.00405,ETH,staking,
